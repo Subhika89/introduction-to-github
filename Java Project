@@ -1,0 +1,38 @@
+import java.util.Scanner;
+import java.util.HashMap;
+
+public class GradeManagement {
+    public static void main(String[] args) {
+        HashMap<String, Double> students = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        while(true) {
+            System.out.println("\n1. Add Student\n2. View Grades\n3. Exit");
+            System.out.print("Choose option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+            
+            switch(choice) {
+                case 1:
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter grade: ");
+                    double grade = scanner.nextDouble();
+                    students.put(name, grade);
+                    break;
+                case 2:
+                    System.out.println("\nStudent Grades:");
+                    for(String student : students.keySet()) {
+                        System.out.println(student + ": " + students.get(student));
+                    }
+                    break;
+                case 3:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
